@@ -1,0 +1,661 @@
+{
+  "sentences": [
+    {
+      "no": 1,
+      "text": "I don’t care."
+    },
+    {
+      "no": 2,
+      "text": "What do you think?"
+    },
+    {
+      "no": 3,
+      "text": "I already knew."
+    },
+    {
+      "no": 4,
+      "text": "Don’t do that again."
+    },
+    {
+      "no": 5,
+      "text": "Leave me alone."
+    },
+    {
+      "no": 6,
+      "text": "Don’t lie to me."
+    },
+    {
+      "no": 7,
+      "text": "I’m not kidding."
+    },
+    {
+      "no": 8,
+      "text": "You’ve changed a lot."
+    },
+    {
+      "no": 9,
+      "text": "I don’t understand."
+    },
+    {
+      "no": 10,
+      "text": "Let it happen."
+    },
+    {
+      "no": 11,
+      "text": "Love the vibe."
+    },
+    {
+      "no": 12,
+      "text": "I lowkey like it."
+    },
+    {
+      "no": 13,
+      "text": "I highkey love this."
+    },
+    {
+      "no": 14,
+      "text": "That was cringe."
+    },
+    {
+      "no": 15,
+      "text": "Nice glow-up."
+    },
+    {
+      "no": 16,
+      "text": "Stop flexing."
+    },
+    {
+      "no": 17,
+      "text": "He ghosted me."
+    },
+    {
+      "no": 18,
+      "text": "That reply was savage."
+    },
+    {
+      "no": 19,
+      "text": "That was wholesome."
+    },
+    {
+      "no": 20,
+      "text": "The party was lit."
+    },
+    {
+      "no": 21,
+      "text": "That was so random."
+    },
+    {
+      "no": 22,
+      "text": "That sounds sus."
+    },
+    {
+      "no": 23,
+      "text": "I was tired. However, I continued."
+    },
+    {
+      "no": 24,
+      "text": "It was late. Therefore, I left."
+    },
+    {
+      "no": 25,
+      "text": "Actually, I agree with you."
+    },
+    {
+      "no": 26,
+      "text": "Hurry up otherwise we’ll be late."
+    },
+    {
+      "no": 27,
+      "text": "Meanwhile, I’ll wait here."
+    },
+    {
+      "no": 28,
+      "text": "Anyway, let’s move on."
+    },
+    {
+      "no": 29,
+      "text": "I like fruits, especially mangoes."
+    },
+    {
+      "no": 30,
+      "text": "She eventually succeeded."
+    },
+    {
+      "no": 31,
+      "text": "Apparently, he is busy."
+    },
+    {
+      "no": 32,
+      "text": "Trust me."
+    },
+    {
+      "no": 33,
+      "text": "Wait for me."
+    },
+    {
+      "no": 34,
+      "text": "Don’t forget to tell me."
+    },
+    {
+      "no": 35,
+      "text": "I’m trying."
+    },
+    {
+      "no": 36,
+      "text": "I’m used to it."
+    },
+    {
+      "no": 37,
+      "text": "Let’s get started."
+    },
+    {
+      "no": 38,
+      "text": "Now it’s my turn."
+    },
+    {
+      "no": 39,
+      "text": "I don’t think so."
+    },
+    {
+      "no": 40,
+      "text": "It’s fine with me."
+    },
+    {
+      "no": 41,
+      "text": "I don’t mind."
+    },
+    {
+      "no": 42,
+      "text": "You’re right."
+    },
+    {
+      "no": 43,
+      "text": "It was my mistake."
+    },
+    {
+      "no": 44,
+      "text": "What are you doing?"
+    },
+    {
+      "no": 45,
+      "text": "Where are you going?"
+    },
+    {
+      "no": 46,
+      "text": "When will you come?"
+    },
+    {
+      "no": 47,
+      "text": "I don’t know."
+    },
+    {
+      "no": 48,
+      "text": "I’ll be right back."
+    },
+    {
+      "no": 49,
+      "text": "Give me some time."
+    },
+    {
+      "no": 50,
+      "text": "I didn’t understand."
+    },
+    {
+      "no": 51,
+      "text": "Say it again."
+    },
+    {
+      "no": 52,
+      "text": "Speak a little slowly."
+    },
+    {
+      "no": 53,
+      "text": "I’m in a hurry."
+    },
+    {
+      "no": 54,
+      "text": "No problem."
+    },
+    {
+      "no": 55,
+      "text": "Let me go."
+    }
+  ],
+  "phrases": [
+    {
+      "no": 1,
+      "phrase": "That one",
+      "hindiHint": ""
+    },
+    {
+      "no": 2,
+      "phrase": "Then what?",
+      "hindiHint": ""
+    },
+    {
+      "no": 3,
+      "phrase": "Why not?",
+      "hindiHint": "क्यों नहीं?"
+    },
+    {
+      "no": 4,
+      "phrase": "Really?",
+      "hindiHint": "सच में?"
+    },
+    {
+      "no": 5,
+      "phrase": "Wherever",
+      "hindiHint": "जहाँ भी"
+    },
+    {
+      "no": 6,
+      "phrase": "Be quiet",
+      "hindiHint": "चुप रहो"
+    },
+    {
+      "no": 7,
+      "phrase": "Whenever",
+      "hindiHint": "जब भी"
+    },
+    {
+      "no": 8,
+      "phrase": "Elsewhere",
+      "hindiHint": "कहीं और"
+    },
+    {
+      "no": 9,
+      "phrase": "Be calm",
+      "hindiHint": "शांत रहो"
+    },
+    {
+      "no": 10,
+      "phrase": "Whoever",
+      "hindiHint": "जो कोई भी"
+    },
+    {
+      "no": 11,
+      "phrase": "Ask him",
+      "hindiHint": ""
+    },
+    {
+      "no": 12,
+      "phrase": "It’s done",
+      "hindiHint": "यह हो गया"
+    },
+    {
+      "no": 13,
+      "phrase": "For what?",
+      "hindiHint": ""
+    },
+    {
+      "no": 14,
+      "phrase": "Take it",
+      "hindiHint": ""
+    },
+    {
+      "no": 15,
+      "phrase": "Got it",
+      "hindiHint": "समझ गया"
+    },
+    {
+      "no": 16,
+      "phrase": "When then?",
+      "hindiHint": ""
+    },
+    {
+      "no": 17,
+      "phrase": "Perhaps",
+      "hindiHint": "शायद"
+    },
+    {
+      "no": 18,
+      "phrase": "Not yet",
+      "hindiHint": "अभी नहीं"
+    },
+    {
+      "no": 19,
+      "phrase": "Get out",
+      "hindiHint": "बाहर निकलो"
+    },
+    {
+      "no": 20,
+      "phrase": "Take a bath",
+      "hindiHint": ""
+    },
+    {
+      "no": 21,
+      "phrase": "All of us",
+      "hindiHint": "हम सभी"
+    },
+    {
+      "no": 22,
+      "phrase": "Sometimes",
+      "hindiHint": "कभी-कभी"
+    },
+    {
+      "no": 23,
+      "phrase": "Taste it",
+      "hindiHint": ""
+    },
+    {
+      "no": 24,
+      "phrase": "Me too",
+      "hindiHint": "मैं भी"
+    },
+    {
+      "no": 25,
+      "phrase": "Open it",
+      "hindiHint": ""
+    },
+    {
+      "no": 26,
+      "phrase": "Be happy",
+      "hindiHint": "खुश रहो"
+    },
+    {
+      "no": 27,
+      "phrase": "Why me?",
+      "hindiHint": "मैं ही क्यों?"
+    },
+    {
+      "no": 28,
+      "phrase": "Come fast",
+      "hindiHint": ""
+    },
+    {
+      "no": 29,
+      "phrase": "Sit down",
+      "hindiHint": ""
+    },
+    {
+      "no": 30,
+      "phrase": "Certainly",
+      "hindiHint": "निश्चित रूप से"
+    },
+    {
+      "no": 31,
+      "phrase": "Yes, sure",
+      "hindiHint": "हाँ, ज़रूर"
+    },
+    {
+      "no": 32,
+      "phrase": "Wrap it",
+      "hindiHint": ""
+    },
+    {
+      "no": 33,
+      "phrase": "Let’s go",
+      "hindiHint": "चलो चलें"
+    },
+    {
+      "no": 34,
+      "phrase": "Let it be",
+      "hindiHint": "इसे रहने दो"
+    },
+    {
+      "no": 35,
+      "phrase": "Don’t go",
+      "hindiHint": "मत जाओ"
+    },
+    {
+      "no": 36,
+      "phrase": "Go ahead",
+      "hindiHint": "आगे बढ़ो / शुरू करो"
+    },
+    {
+      "no": 37,
+      "phrase": "Over here",
+      "hindiHint": "यहाँ"
+    },
+    {
+      "no": 38,
+      "phrase": "Not you",
+      "hindiHint": "तुम नहीं"
+    },
+    {
+      "no": 39,
+      "phrase": "Carry on",
+      "hindiHint": "जारी रखो"
+    },
+    {
+      "no": 40,
+      "phrase": "Next time",
+      "hindiHint": "अगली बार"
+    },
+    {
+      "no": 41,
+      "phrase": "It is",
+      "hindiHint": ""
+    },
+    {
+      "no": 42,
+      "phrase": "Nothing",
+      "hindiHint": "कुछ नहीं"
+    },
+    {
+      "no": 43,
+      "phrase": "Move aside",
+      "hindiHint": "एक तरफ हटो"
+    },
+    {
+      "no": 44,
+      "phrase": "Do it",
+      "hindiHint": "इसे करो"
+    },
+    {
+      "no": 45,
+      "phrase": "Hold it",
+      "hindiHint": "इसे पकड़ो / रुको"
+    },
+    {
+      "no": 46,
+      "phrase": "What now?",
+      "hindiHint": "अब क्या?"
+    },
+    {
+      "no": 47,
+      "phrase": "Eat it",
+      "hindiHint": ""
+    },
+    {
+      "no": 48,
+      "phrase": "So what?",
+      "hindiHint": "तो क्या?"
+    },
+    {
+      "no": 49,
+      "phrase": "Leave it",
+      "hindiHint": "इसे छोड़ दो"
+    },
+    {
+      "no": 50,
+      "phrase": "My bad",
+      "hindiHint": "मेरी गलती"
+    },
+    {
+      "no": 51,
+      "phrase": "What’s next?",
+      "hindiHint": "अब आगे क्या?"
+    },
+    {
+      "no": 52,
+      "phrase": "No idea",
+      "hindiHint": "कोई विचार नहीं"
+    },
+    {
+      "no": 53,
+      "phrase": "Somehow",
+      "hindiHint": "किसी तरह"
+    },
+    {
+      "no": 54,
+      "phrase": "How come?",
+      "hindiHint": "ऐसा क्यों?"
+    },
+    {
+      "no": 55,
+      "phrase": "No more",
+      "hindiHint": "अब और नहीं"
+    },
+    {
+      "no": 56,
+      "phrase": "Hold on",
+      "hindiHint": "रुको"
+    },
+    {
+      "no": 57,
+      "phrase": "Till now",
+      "hindiHint": "अब तक"
+    },
+    {
+      "no": 58,
+      "phrase": "So and so",
+      "hindiHint": ""
+    },
+    {
+      "no": 59,
+      "phrase": "Get up",
+      "hindiHint": "उठो"
+    },
+    {
+      "no": 60,
+      "phrase": "Some day",
+      "hindiHint": "किसी दिन"
+    },
+    {
+      "no": 61,
+      "phrase": "Run away",
+      "hindiHint": "भाग जाओ"
+    },
+    {
+      "no": 62,
+      "phrase": "Move on",
+      "hindiHint": "आगे बढ़ो"
+    },
+    {
+      "no": 63,
+      "phrase": "You won",
+      "hindiHint": "तुम जीत गए"
+    },
+    {
+      "no": 64,
+      "phrase": "Cheer up",
+      "hindiHint": "हौसला रखो"
+    },
+    {
+      "no": 65,
+      "phrase": "Give me",
+      "hindiHint": "मुझे दो"
+    },
+    {
+      "no": 66,
+      "phrase": "Many times",
+      "hindiHint": "कई बार"
+    },
+    {
+      "no": 67,
+      "phrase": "Shut up",
+      "hindiHint": "चुप रहो"
+    },
+    {
+      "no": 68,
+      "phrase": "It’s up to you",
+      "hindiHint": "यह तुम्हारी मर्ज़ी है"
+    },
+    {
+      "no": 69,
+      "phrase": "As you wish",
+      "hindiHint": "जैसा तुम चाहो"
+    },
+    {
+      "no": 70,
+      "phrase": "My wish",
+      "hindiHint": "मेरी इच्छा"
+    },
+    {
+      "no": 71,
+      "phrase": "My will",
+      "hindiHint": "मेरी इच्छा / मेरी मर्ज़ी"
+    }
+  ],
+  "modalVerbs": [
+    {
+      "modal": "can",
+      "hindiMeaning": "सकना / सकता है",
+      "use": "ability, possibility, informal permission",
+      "example": "I can solve this problem."
+    },
+    {
+      "modal": "could",
+      "hindiMeaning": "सकता था / सकते हैं",
+      "use": "past ability, polite request, possibility",
+      "example": "Could you help me?"
+    },
+    {
+      "modal": "may",
+      "hindiMeaning": "सकता है / अनुमति",
+      "use": "possibility, formal permission",
+      "example": "You may leave now."
+    },
+    {
+      "modal": "might",
+      "hindiMeaning": "शायद / संभवतः",
+      "use": "weak possibility",
+      "example": "It might rain tonight."
+    },
+    {
+      "modal": "must",
+      "hindiMeaning": "अवश्य / ज़रूर",
+      "use": "strong obligation or strong certainty",
+      "example": "You must submit the assignment."
+    },
+    {
+      "modal": "should",
+      "hindiMeaning": "चाहिए",
+      "use": "advice, expectation, duty",
+      "example": "You should practice every day."
+    },
+    {
+      "modal": "would",
+      "hindiMeaning": "करता / करेंगे",
+      "use": "polite request, preference, hypothetical situations",
+      "example": "Would you like some coffee?"
+    },
+    {
+      "modal": "shall",
+      "hindiMeaning": "क्या हम / करेंगे",
+      "use": "suggestion or formal future",
+      "example": "Shall we start?"
+    },
+    {
+      "modal": "will",
+      "hindiMeaning": "करेगा / होगा",
+      "use": "future, willingness",
+      "example": "I will call you tomorrow."
+    },
+    {
+      "modal": "ought to",
+      "hindiMeaning": "करना चाहिए",
+      "use": "advice or moral duty",
+      "example": "You ought to respect others."
+    },
+    {
+      "modal": "need to",
+      "hindiMeaning": "ज़रूरत होना",
+      "use": "necessity",
+      "example": "You need to finish the work today."
+    },
+    {
+      "modal": "have to",
+      "hindiMeaning": "करना पड़ना",
+      "use": "external obligation",
+      "example": "I have to attend the meeting."
+    },
+    {
+      "modal": "used to",
+      "hindiMeaning": "पहले किया करता था",
+      "use": "past habit or state",
+      "example": "I used to play football."
+    }
+  ]
+}
