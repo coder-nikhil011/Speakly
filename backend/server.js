@@ -99,7 +99,7 @@ app.get("/", (req, res) => {
   });
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5001;
 
 console.log("DEBUG: GOOGLE_CLIENT_ID is:", process.env.GOOGLE_CLIENT_ID ? "LOADED" : "MISSING");
 console.log("DEBUG: GOOGLE_CLIENT_SECRET is:", process.env.GOOGLE_CLIENT_SECRET ? "LOADED" : "MISSING");
