@@ -47,7 +47,9 @@ connectDB().then(() => seedWordList()).catch((error) => console.error("Word libr
 // Middleware
 app.use(
   cors({
-    origin: true,
+    origin:[
+      "https://speakly-production-1703.up.railway.app",
+    ],
     credentials: true,
   })
 );
