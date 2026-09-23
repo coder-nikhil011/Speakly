@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const JoinRequest = require("../models/JoinRequest");
+const { createNotification } = require('../utils/notificationHelper');
 
 /**
  * Student: Request to join a teacher's class.
@@ -23,6 +24,14 @@ const requestJoin = async (req, res) => {
       existingRequest.status = "pending";
       existingRequest.requestedAt = new Date();
       await existingRequest.save();
+      
+      await createNotification({
+        recipient: existingRequest.teacherId,
+        type: 'connection',
+        title: 'Student accepted your request',
+        message: `A student has requested to join your class.`,
+        relatedId: studentId
+      });
     } else {
       await JoinRequest.create({ studentId, teacherId: teacher._id });
     }
@@ -66,6 +75,16 @@ const handleRequest = async (req, res) => {
 
     request.status = action;
     await request.save();
+
+    if (action === 'accepted') {
+      await createNotification({
+        recipient: request.studentId,
+        type: 'connection',
+        title: 'Teacher connection accepted',
+        message: 'Your teacher has accepted your connection request!',
+        relatedId: request.teacherId
+      });
+    }
 
     res.json({ success: true, message: `Request ${action} successfully!` });
   } catch (error) {

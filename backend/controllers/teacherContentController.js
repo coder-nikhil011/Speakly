@@ -2,6 +2,7 @@ const Word = require("../models/Word");
 const Sentence = require("../models/Sentence");
 const LearningProgress = require("../models/LearningProgress");
 const Lesson = require("../models/Lesson");
+const { createNotification } = require('../utils/notificationHelper');
 const { autoSyncWords } = require("../services/wordSyncService");
 
 
@@ -56,6 +57,18 @@ const createLesson = async (req, res) => {
         );
       }
     }
+
+    // Notify students
+    const JoinRequest = require("../models/JoinRequest");
+    const connections = await JoinRequest.find({ teacherId: teacherId, status: 'accepted' }).select('studentId');
+    const notifications = connections.map(c => createNotification({
+      recipient: c.studentId,
+      type: 'lesson',
+      title: 'New lesson available',
+      message: `Teacher has published a new lesson: ${title}`,
+      relatedId: lesson._id
+    }));
+    await Promise.all(notifications);
 
     res.status(201).json({
       success: true,

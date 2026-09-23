@@ -120,50 +120,52 @@ function AppContent() {
         <Route path="/student-setup" element={<ProtectedRoute role="student"><StudentSetup /></ProtectedRoute>} />
         <Route path="/teacher-setup" element={<ProtectedRoute role="teacher"><TeacherSetup /></ProtectedRoute>} />
         <Route path="/student" element={<ProtectedRoute role="student"><StudentDashboard /></ProtectedRoute>} />
+        
+        {/* Student Nested Routes */}
+        <Route path="/student">
+          <Route path="learn" element={<ProtectedRoute role="student"><Learn /></ProtectedRoute>} />
+          <Route path="word-learning" element={<ProtectedRoute role="student"><WordLearning /></ProtectedRoute>} />
+          <Route path="sentence-practice" element={<ProtectedRoute role="student"><SentencePractice /></ProtectedRoute>} />
+          <Route path="grammar-hint" element={<ProtectedRoute role="student"><GrammarHint /></ProtectedRoute>} />
+          <Route path="word-result" element={<ProtectedRoute role="student"><WordResult /></ProtectedRoute>} />
+          <Route path="smart-revision" element={<ProtectedRoute role="student"><SmartRevision /></ProtectedRoute>} />
+          <Route path="revision-session" element={<ProtectedRoute role="student"><RevisionSession /></ProtectedRoute>} />
+          <Route path="speaking-practice" element={<ProtectedRoute role="student"><SpeakingPractice /></ProtectedRoute>} />
+          <Route path="speaking-practice/scenarios" element={<ProtectedRoute role="student"><ScenarioPractice /></ProtectedRoute>} />
+          <Route path="ai-friend" element={<ProtectedRoute role="student"><AIFriend /></ProtectedRoute>} />
+          <Route path="conversation" element={<ProtectedRoute role="student"><Conversation /></ProtectedRoute>} />
+          <Route path="speaking-feedback" element={<ProtectedRoute role="student"><SpeakingFeedback /></ProtectedRoute>} />
+          <Route path="challenges" element={<ProtectedRoute role="student"><Challenges /></ProtectedRoute>} />
+          <Route path="contest" element={<ProtectedRoute role="student"><Contest /></ProtectedRoute>} />
+          <Route path="speaking-room" element={<ProtectedRoute role="student"><SpeakingRoom /></ProtectedRoute>} />
+          <Route path="ai-video-call" element={<ProtectedRoute role="student"><AIVideoCall /></ProtectedRoute>} />
+          <Route path="ai-chat" element={<ProtectedRoute role="student"><AIChat /></ProtectedRoute>} />
+          <Route path="daily-challenge" element={<ProtectedRoute role="student"><DailyChallenge /></ProtectedRoute>} />
+          <Route path="progress" element={<ProtectedRoute role="student"><Progress /></ProtectedRoute>} />
+          <Route path="learning-history" element={<ProtectedRoute role="student"><LearningHistory /></ProtectedRoute>} />
+          <Route path="weak-areas" element={<ProtectedRoute role="student"><WeakAreas /></ProtectedRoute>} />
+          <Route path="weekly-test" element={<ProtectedRoute role="student"><WeeklyTest /></ProtectedRoute>} />
+          <Route path="student-profile" element={<ProtectedRoute role="student"><StudentProfile /></ProtectedRoute>} />
+          <Route path="my-teachers" element={<ProtectedRoute role="student"><MyTeachers /></ProtectedRoute>} />
+        </Route>
+        
         <Route path="/teacher" element={<ProtectedRoute role="teacher"><TeacherDashboard /></ProtectedRoute>} />
         
-        <Route path="/learn" element={<ProtectedRoute role="student"><Learn /></ProtectedRoute>} />
-        <Route path="/word-learning" element={<ProtectedRoute role="student"><WordLearning /></ProtectedRoute>} />
-        <Route path="/sentence-practice" element={<ProtectedRoute role="student"><SentencePractice /></ProtectedRoute>} />
-        <Route path="/grammar-hint" element={<ProtectedRoute role="student"><GrammarHint /></ProtectedRoute>} />
-        <Route path="/word-result" element={<ProtectedRoute role="student"><WordResult /></ProtectedRoute>} />
-        <Route path="/smart-revision" element={<ProtectedRoute role="student"><SmartRevision /></ProtectedRoute>} />
-        <Route path="/revision-session" element={<ProtectedRoute role="student"><RevisionSession /></ProtectedRoute>} />
-        <Route path="/speaking-practice" element={<ProtectedRoute role="student"><SpeakingPractice /></ProtectedRoute>} />
-        <Route path="/speaking-practice/scenarios" element={<ProtectedRoute role="student"><ScenarioPractice /></ProtectedRoute>} />
-        <Route path="/ai-friend" element={<ProtectedRoute role="student"><AIFriend /></ProtectedRoute>} />
-        <Route path="/conversation" element={<ProtectedRoute role="student"><Conversation /></ProtectedRoute>} />
-        <Route path="/speaking-feedback" element={<ProtectedRoute role="student"><SpeakingFeedback /></ProtectedRoute>} />
-        <Route path="/challenges" element={<ProtectedRoute role="student"><Challenges /></ProtectedRoute>} />
-        <Route path="/contest" element={<ProtectedRoute role="student"><Contest /></ProtectedRoute>} />
-        <Route path="/speaking-room" element={<ProtectedRoute role="student"><SpeakingRoom /></ProtectedRoute>} />
-        <Route path="/ai-video-call" element={<ProtectedRoute role="student"><AIVideoCall /></ProtectedRoute>} />
-        <Route path="/ai-chat" element={<ProtectedRoute role="student"><AIChat /></ProtectedRoute>} />
-        <Route path="/daily-challenge" element={<ProtectedRoute role="student"><DailyChallenge /></ProtectedRoute>} />
-        <Route path="/progress" element={<ProtectedRoute role="student"><Progress /></ProtectedRoute>} />
-        <Route path="/learning-history" element={<ProtectedRoute role="student"><LearningHistory /></ProtectedRoute>} />
-        <Route path="/weak-areas" element={<ProtectedRoute role="student"><WeakAreas /></ProtectedRoute>} />
-        <Route path="/weekly-test" element={<ProtectedRoute role="student"><WeeklyTest /></ProtectedRoute>} />
-        <Route path="/student-profile" element={<ProtectedRoute role="student"><StudentProfile /></ProtectedRoute>} />
-        <Route path="/my-teachers" element={<ProtectedRoute role="student"><MyTeachers /></ProtectedRoute>} />
-        <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-
-        <Route path="/students" element={<ProtectedRoute role="teacher"><Students /></ProtectedRoute>} />
-        <Route path="/assignments" element={<ProtectedRoute role="teacher"><Assignments /></ProtectedRoute>} />
-        <Route path="/assignment/:id" element={<ProtectedRoute role="teacher"><AssignmentDetail /></ProtectedRoute>} />
-        <Route path="/create-assignment" element={<ProtectedRoute role="teacher"><CreateAssignment /></ProtectedRoute>} />
-        <Route path="/teacher-content" element={<ProtectedRoute role="teacher"><TeacherContentManager /></ProtectedRoute>} />
-        <Route path="/teacher/lesson/:id" element={<ProtectedRoute role="teacher"><TeacherLessonDetail /></ProtectedRoute>} />
-        <Route path="/teacher/word/:id" element={<ProtectedRoute role="teacher"><TeacherWordDetail /></ProtectedRoute>} />
-        <Route path="/teacher/students" element={<ProtectedRoute role="teacher"><Students /></ProtectedRoute>} />
-        <Route path="/teacher/classes" element={<ProtectedRoute role="teacher"><Assignments /></ProtectedRoute>} />
-        <Route path="/teacher/dashboard" element={<ProtectedRoute role="teacher"><TeacherDashboard /></ProtectedRoute>} />
-        <Route path="/teacher/content-manager" element={<ProtectedRoute role="teacher"><TeacherContentManager /></ProtectedRoute>} />
-        <Route path="/teacher/ai-assistant" element={<ProtectedRoute role="teacher"><TeacherAIAssistant /></ProtectedRoute>} />
-        <Route path="/teacher/student-overview" element={<ProtectedRoute role="teacher"><TeacherStudentOverview /></ProtectedRoute>} />
-        <Route path="/teacher/teacher-progress" element={<ProtectedRoute role="teacher"><TeacherProgress /></ProtectedRoute>} />
-        <Route path="/teacher/teacher-weak-areas" element={<ProtectedRoute role="teacher"><TeacherWeakAreas /></ProtectedRoute>} />
-        <Route path="/teacher-profile" element={<ProtectedRoute role="teacher"><TeacherProfile /></ProtectedRoute>} />
+        {/* Teacher Nested Routes */}
+        <Route path="/teacher">
+          <Route path="students" element={<ProtectedRoute role="teacher"><Students /></ProtectedRoute>} />
+          <Route path="assignments" element={<ProtectedRoute role="teacher"><Assignments /></ProtectedRoute>} />
+          <Route path="assignment/:id" element={<ProtectedRoute role="teacher"><AssignmentDetail /></ProtectedRoute>} />
+          <Route path="create-assignment" element={<ProtectedRoute role="teacher"><CreateAssignment /></ProtectedRoute>} />
+          <Route path="content" element={<ProtectedRoute role="teacher"><TeacherContentManager /></ProtectedRoute>} />
+          <Route path="lesson/:id" element={<ProtectedRoute role="teacher"><TeacherLessonDetail /></ProtectedRoute>} />
+          <Route path="word/:id" element={<ProtectedRoute role="teacher"><TeacherWordDetail /></ProtectedRoute>} />
+          <Route path="student-overview" element={<ProtectedRoute role="teacher"><TeacherStudentOverview /></ProtectedRoute>} />
+          <Route path="teacher-progress" element={<ProtectedRoute role="teacher"><TeacherProgress /></ProtectedRoute>} />
+          <Route path="teacher-weak-areas" element={<ProtectedRoute role="teacher"><TeacherWeakAreas /></ProtectedRoute>} />
+          <Route path="ai-assistant" element={<ProtectedRoute role="teacher"><TeacherAIAssistant /></ProtectedRoute>} />
+          <Route path="profile" element={<ProtectedRoute role="teacher"><TeacherProfile /></ProtectedRoute>} />
+        </Route>
 
         <Route path="/student/teacher-lessons" element={<ProtectedRoute role="student"><StudentTeacherLessons /></ProtectedRoute>} />
         <Route path="/social/community" element={<ProtectedRoute role="student"><Community /></ProtectedRoute>} />

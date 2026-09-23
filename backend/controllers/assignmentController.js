@@ -1,5 +1,6 @@
 const Assignment = require('../models/Assignment');
 const JoinRequest = require('../models/JoinRequest');
+const { createNotification } = require('../utils/notificationHelper');
 
 exports.getAssignments = async (req, res) => {
   try {
@@ -14,6 +15,17 @@ exports.createAssignment = async (req, res) => {
     if (!title?.trim()) return res.status(400).json({ success: false, message: 'Assignment title is required.' });
     const connections = await JoinRequest.find({ teacherId: req.user.userId, status: 'accepted' }).select('studentId');
     const assignment = await Assignment.create({ title: title.trim(), description: description || '', dueDate, teacherId: req.user.userId, studentsEnrolled: connections.map(c => c.studentId) });
+
+    // Notify students
+    const notifications = connections.map(c => createNotification({
+      recipient: c.studentId,
+      type: 'assignment',
+      title: 'New assignment received',
+      message: `Teacher has assigned you: ${title.trim()}`,
+      relatedId: assignment._id
+    }));
+    await Promise.all(notifications);
+
     res.status(201).json({ success: true, assignment });
   } catch (error) { res.status(400).json({ success: false, message: 'Error creating assignment' }); }
 };
