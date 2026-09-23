@@ -83,7 +83,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/student", studentRoutes);
 app.use("/api/teacher", teacherRoutes);
-app.use("/api/notification", notificationRoutes);
+app.use("/api/notifications", notificationRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/feedback", feedbackRoutes);
 app.use("/api/learning", learningRoutes);
