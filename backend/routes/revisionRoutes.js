@@ -46,4 +46,23 @@ router.get(
 );
 
 
+router.get('/due', protect, async (req, res) => {
+  try {
+    const dueWords = await srsService.getDueWords(req.user.userId);
+    res.json({ success: true, dueWords });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
+router.post('/update', protect, async (req, res) => {
+  try {
+    const { wordId, quality } = req.body;
+    const result = await srsService.calculateNextReview(req.user.userId, wordId, quality);
+    res.json({ success: true, result });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
 module.exports = router;

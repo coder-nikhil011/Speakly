@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
-const studentProfileSchema = new mongoose.Schema(
+const studentProfileSchema = new mongoose.Schema({
+  xp: { type: Number, default: 0 },
+  streak: { type: Number, default: 0 },
+  lastActivityDate: { type: Date },
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,

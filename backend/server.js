@@ -33,20 +33,18 @@ const contentRoutes = require("./routes/contentRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
 const contentLearningRoutes = require("./routes/contentLearningRoutes");
 const challengeRoutes = require("./routes/challengeRoutes");
+const gamificationRoutes = require("./routes/gamificationRoutes");
 const roomRoutes = require("./routes/roomRoutes");
 const aiUsageRoutes = require("./routes/aiUsageRoutes");
 const { seedWordList } = require("./services/wordSeedService");
-const { seedDummyUsers } = require('./utils/seed');
+
 
 dotenv.config();
 
 const app = express();
 
 // Connect MongoDB
-connectDB().then(async () => {
-  await seedWordList();
-  await seedDummyUsers();
-}).catch((error) => console.error("Database initialization failed:", error.message));
+connectDB().then(() => seedWordList()).catch((error) => console.error("Word library sync failed:", error.message));
 
 // Middleware
 const corsOptions = {
@@ -104,6 +102,7 @@ app.use("/api/content", contentRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/learning-content", contentLearningRoutes);
 app.use("/api/challenges", challengeRoutes);
+app.use("/api/gamification", gamificationRoutes);
 app.use("/api/rooms", roomRoutes);
 app.use("/api/ai-usage", aiUsageRoutes);
 

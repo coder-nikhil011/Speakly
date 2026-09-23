@@ -1,6 +1,7 @@
 const Assignment = require('../models/Assignment');
 const JoinRequest = require('../models/JoinRequest');
 const { createNotification } = require('../utils/notificationHelper');
+const gamificationService = require('../services/gamificationService');
 
 exports.getAssignments = async (req, res) => {
   try {
@@ -25,6 +26,10 @@ exports.createAssignment = async (req, res) => {
       relatedId: assignment._id
     }));
     await Promise.all(notifications);
+
+    // Add bonus XP to students for the new challenge
+    const xpPromises = connections.map(c => gamificationService.addXP(c.studentId, 10));
+    await Promise.all(xpPromises);
 
     res.status(201).json({ success: true, assignment });
   } catch (error) { res.status(400).json({ success: false, message: 'Error creating assignment' }); }
