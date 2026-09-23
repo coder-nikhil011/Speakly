@@ -36,13 +36,17 @@ const challengeRoutes = require("./routes/challengeRoutes");
 const roomRoutes = require("./routes/roomRoutes");
 const aiUsageRoutes = require("./routes/aiUsageRoutes");
 const { seedWordList } = require("./services/wordSeedService");
+const { seedDummyUsers } = require('./utils/seed');
 
 dotenv.config();
 
 const app = express();
 
 // Connect MongoDB
-connectDB().then(() => seedWordList()).catch((error) => console.error("Word library sync failed:", error.message));
+connectDB().then(async () => {
+  await seedWordList();
+  await seedDummyUsers();
+}).catch((error) => console.error("Database initialization failed:", error.message));
 
 // Middleware
 const corsOptions = {
