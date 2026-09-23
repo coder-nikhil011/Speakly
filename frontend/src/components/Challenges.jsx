@@ -35,10 +35,12 @@ function Challenges() {
         <Link to="/student" className="text-sm font-bold text-slate-500">← Dashboard</Link>
         <div className="mt-10"><p className="text-sm font-bold text-[#65B891]">AI CHALLENGES</p><h1 className="mt-3 text-4xl font-extrabold">A challenge that changes with you.</h1><p className="mt-3 max-w-2xl text-slate-500">Daily and weekly challenges use your learning history, so two students do not receive the same practice.</p></div>
         {message && <div className="mt-6 rounded-2xl bg-white border border-slate-200 p-4 text-sm font-semibold text-slate-600">{message}</div>}
+        <Link>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
-          <ChallengeCard title="Daily Challenge" icon="⚡" text="A short AI-generated task based on the words and skills you recently practiced." onClick={() => start("daily")} existing={latest("daily")} onComplete={finish} />
-          <ChallengeCard title="Weekly Challenge" icon="📅" text="A bigger task that combines your recent vocabulary, sentences and speaking practice." onClick={() => start("weekly")} existing={latest("weekly")} onComplete={finish} />
+          <ChallengeCard to="/challenges/daily-challanges" title="Daily Challenge" icon="⚡" text="A short AI-generated task based on the words and skills you recently practiced." onClick={() => start("daily")} existing={latest("daily")} onComplete={finish} />
+          <ChallengeCard to="/challenges/weekly-challenges" title="Weekly Challenge" icon="📅" text="A bigger task that combines your recent vocabulary, sentences and speaking practice." onClick={() => start("weekly")} existing={latest("weekly")} onComplete={finish} />
         </div>
+        </Link>
         <div className="mt-8 rounded-[2rem] bg-black p-8 text-white sm:p-10">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"><div><p className="text-xs font-bold uppercase tracking-widest text-neutral-400">CONTEST</p><h2 className="mt-2 text-2xl font-extrabold">Speakly Open Contest</h2><p className="mt-2 max-w-xl text-sm leading-6 text-neutral-400">Like LeetCode: register, receive a challenge designed around your level, and decide yourself whether you finish it. Basic plan does not include contests.</p></div><button onClick={() => start("contest")} className="rounded-xl bg-white px-6 py-3 font-bold text-black">Register for contest</button></div>
           {user?.plan === "Basic" && import.meta.env.VITE_DEVELOPER_MODE !== "true" && <p className="mt-4 text-xs font-semibold text-neutral-500">Available on Premium and Advance.</p>}
