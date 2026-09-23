@@ -98,7 +98,7 @@ app.get("/", (req, res) => {
     message: "Speakly API is running",
   });
 });
-
+// backend running on port 5001 if not then it will use the port defined in the environment variable PORT
 const PORT = process.env.PORT || 5001;
 
 console.log("DEBUG: GOOGLE_CLIENT_ID is:", process.env.GOOGLE_CLIENT_ID ? "LOADED" : "MISSING");
