@@ -45,14 +45,23 @@ const app = express();
 connectDB().then(() => seedWordList()).catch((error) => console.error("Word library sync failed:", error.message));
 
 // Middleware
-app.use(
-  cors({
-    origin:[
-      "https://speakly-production-1703.up.railway.app",
-    ],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: [
+    "https://speakly-eosin.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:5174"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
+
+app.use(cors(corsOptions));
+
+// Handle browser preflight requests
+app.options(/.*/, cors(corsOptions));
+
+app.use(express.json());
 
 app.use(
   session({
@@ -106,6 +115,6 @@ const PORT = process.env.PORT || 5001;
 console.log("DEBUG: GOOGLE_CLIENT_ID is:", process.env.GOOGLE_CLIENT_ID ? "LOADED" : "MISSING");
 console.log("DEBUG: GOOGLE_CLIENT_SECRET is:", process.env.GOOGLE_CLIENT_SECRET ? "LOADED" : "MISSING");
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Speakly server running on port ${PORT}`);
 });
