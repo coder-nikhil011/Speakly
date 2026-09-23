@@ -1,43 +1,27 @@
+const { protect } = require('../middleware/authMiddleware');
 const express = require("express");
-
-const authMiddleware =
-  require("../middleware/authMiddleware");
-
-const {
-  getRevision,
-  getSmartRevision,
-  submitRevisionAnswer,
-  getRevisionSummaryController,
-} = require("../controllers/revisionController");
+const authMiddleware = require("../middleware/authMiddleware");
+const { getRevision, getSmartRevision, submitRevisionAnswer, getRevisionSummaryController,} = require("../controllers/revisionController");
 
 const router =
   express.Router();
-
-
 // Normal revision
 router.get(
   "/",
   authMiddleware,
   getRevision
 );
-
-
 // Smart revision
 router.get(
   "/smart",
   authMiddleware,
   getSmartRevision
-);
-
-
-// Submit answer
+);// Submit answer
 router.post(
   "/answer",
   authMiddleware,
   submitRevisionAnswer
 );
-
-
 // Revision summary
 router.get(
   "/summary",
@@ -64,5 +48,4 @@ router.post('/update', protect, async (req, res) => {
     res.status(500).json({ success: false, message: 'Server error' });
   }
 });
-
 module.exports = router;
