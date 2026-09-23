@@ -65,6 +65,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use("/api", apiRoutes);
 
 app.use("/api/payments/webhook", express.raw({ type: "application/json" }));
 app.use(express.json());
