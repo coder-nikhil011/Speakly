@@ -11,9 +11,6 @@ const authMiddleware = (req, res, next) => {
       });
     }
 
-    // Expected:
-    // Authorization: Bearer TOKEN
-
     const parts = authHeader.split(" ");
 
     if (parts.length !== 2 || parts[0] !== "Bearer") {
@@ -45,4 +42,9 @@ const authMiddleware = (req, res, next) => {
   }
 };
 
+// Support both:
+// const authMiddleware = require(...)
+// AND
+// const { protect } = require(...)
 module.exports = authMiddleware;
+module.exports.protect = authMiddleware;
