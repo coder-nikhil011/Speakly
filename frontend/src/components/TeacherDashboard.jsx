@@ -68,7 +68,7 @@ function TeacherDashboard() {
             <div className="space-y-1.5">
             <TeacherSidebarItem to="/teacher" active icon="⌂" text="Overview" isOpen={isSidebarOpen} />
             <TeacherSidebarItem to="/teacher/student-overview" icon="👥" text="Student Overview" isOpen={isSidebarOpen} />
-            <TeacherSidebarItem to="/assignments" icon="📝" text="Assignments" isOpen={isSidebarOpen} />
+            <TeacherSidebarItem to="/teacher/assignments" icon="📝" text="Assignments" isOpen={isSidebarOpen} />
             <TeacherSidebarItem to="/teacher/teacher-progress" icon="📊" text="Progress" isOpen={isSidebarOpen} />
             <TeacherSidebarItem to="/teacher/teacher-weak-areas" icon="⚠" text="Weak Areas" isOpen={isSidebarOpen} />
             <TeacherSidebarItem to="/teacher/ai-assistant" icon="🤖" text="AI Assistant" isOpen={isSidebarOpen} />
@@ -77,7 +77,7 @@ function TeacherDashboard() {
             <div className="absolute bottom-8 left-0 w-full px-6">
             <button
               onClick={handleLogout}
-                className={`w-full rounded-2xl px-4 py-3 text-left text-sm font-medium text-slate-400 transition hover:bg-slate-50 hover:text-red-500 ${
+                className={`w-100 rounded-2xl px-4 py-3 text-left text-sm font-medium text-slate-400 transition hover:bg-slate-50 hover:text-red-500 ${
                 !isSidebarOpen && "text-center !px-0"
               }`}
               title={!isSidebarOpen ? "Log out" : undefined}
