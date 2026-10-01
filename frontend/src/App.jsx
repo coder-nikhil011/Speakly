@@ -154,6 +154,7 @@ function AppContent() {
         {/* Teacher Nested Routes */}
         <Route path="/teacher">
           <Route path="students" element={<ProtectedRoute role="teacher"><Students /></ProtectedRoute>} />
+          <Route path="classes" element={<ProtectedRoute role="teacher"><TeacherContentManager /></ProtectedRoute>} />
           <Route path="assignments" element={<ProtectedRoute role="teacher"><Assignments /></ProtectedRoute>} />
           <Route path="assignment/:id" element={<ProtectedRoute role="teacher"><AssignmentDetail /></ProtectedRoute>} />
           <Route path="create-assignment" element={<ProtectedRoute role="teacher"><CreateAssignment /></ProtectedRoute>} />
@@ -166,7 +167,7 @@ function AppContent() {
           <Route path="ai-assistant" element={<ProtectedRoute role="teacher"><TeacherAIAssistant /></ProtectedRoute>} />
           <Route path="profile" element={<ProtectedRoute role="teacher"><TeacherProfile /></ProtectedRoute>} />
         </Route>
-
+        
         <Route path="/student/teacher-lessons" element={<ProtectedRoute role="student"><StudentTeacherLessons /></ProtectedRoute>} />
         <Route path="/social/community" element={<ProtectedRoute role="student"><Community /></ProtectedRoute>} />
         <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />

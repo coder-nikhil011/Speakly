@@ -67,7 +67,7 @@ function TeacherDashboard() {
           
             <div className="space-y-1.5">
             <TeacherSidebarItem to="/teacher" active icon="⌂" text="Overview" isOpen={isSidebarOpen} />
-            <TeacherSidebarItem to="/teacher/student-overview" icon="👥" text="Student Overview" isOpen={isSidebarOpen} />
+            <TeacherSidebarItem to="/teacher/students" icon="👥" text="Student Overview" isOpen={isSidebarOpen} />
             <TeacherSidebarItem to="/teacher/assignments" icon="📝" text="Assignments" isOpen={isSidebarOpen} />
             <TeacherSidebarItem to="/teacher/teacher-progress" icon="📊" text="Progress" isOpen={isSidebarOpen} />
             <TeacherSidebarItem to="/teacher/teacher-weak-areas" icon="⚠" text="Weak Areas" isOpen={isSidebarOpen} />

@@ -78,7 +78,11 @@ function Students() {
                 <p className="text-sm text-slate-500">Selected student</p>
                 <div className="rounded-xl bg-slate-50 p-4 border border-slate-100">
                   <p className="font-bold text-sm">{selectedStudent.name}</p>
-                  <p className="mt-1 text-xs text-slate-500">Level: {selectedStudent.level} · Progress: {selectedStudent.progress}</p>
+                  <div className="mt-1 space-y-1">
+                    <p className="text-xs text-slate-600"><span className="font-bold">Level:</span> {selectedStudent.level}</p>
+                    <p className="text-xs text-slate-600"><span className="font-bold">Progress:</span> {selectedStudent.progress}</p>
+                    <p className="text-xs text-slate-600"><span className="font-bold">Weak Areas:</span> {selectedStudent.weakAreas || "No data"}</p>
+                  </div >
                 </div>
                 <p className="text-xs text-slate-400">Assignment details will appear here when the teacher assignment API returns student-specific data.</p>
               </div>

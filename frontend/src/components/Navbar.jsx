@@ -36,14 +36,7 @@ function NotificationBell() {
 
   return (
     <div className="relative">
-      <button onClick={handleOpen} className="relative p-2">
-        🔔 
-        {unreadCount > 0 && (
-          <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">
-            {unreadCount}
-          </span>
-        )}
-      </button>
+      
 
       {isOpen && (
         <div className="absolute right-0 w-80 bg-white shadow-xl rounded-lg border mt-2 z-50">
