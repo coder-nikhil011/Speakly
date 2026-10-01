@@ -227,17 +227,17 @@ return (
                 <div className="relative z-10 flex flex-col justify-between gap-8 sm:flex-row sm:items-center">
                   <div >
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Growth Tracker</p>
-                    <h2 className=\"text-3xl font-bold text-slate-800\">You're making steady progress</h2>
-                    <p className=\"mt-2 text-slate-500\">Keep going! Every word brings you closer to mastery.</p>
+                    <h2 className="text-3xl font-bold text-slate-800">You're making steady progress</h2>
+                    <p className="mt-2 text-slate-500">Keep going! Every word brings you closer to mastery.</p>
                   </div>
-                  <div className=\"w-full sm:w-72\">
-                    <div className=\"mb-4 flex justify-between items-end\">
-                      <span className=\"text-sm font-bold text-slate-600\">Overall Mastery</span>
-                      <span className=\"text-3xl font-black text-slate-600\">{progress?.percentage || 0}%</span>
+                  <div className="w-full sm:w-72">
+                    <div className="mb-4 flex justify-between items-end">
+                      <span className="text-sm font-bold text-slate-600">Overall Mastery</span>
+                      <span className="text-3xl font-black text-slate-600">{progress?.percentage || 0}%</span>
                     </div>
-                    <div className=\"h-4 overflow-hidden rounded-full bg-slate-100 p-1\">
+                    <div className="h-4 overflow-hidden rounded-full bg-slate-100 p-1">
                       <div
-                        className=\"h-full rounded-full bg-slate-600 transition-all duration-1000 ease-out\"
+                        className="h-full rounded-full bg-slate-600 transition-all duration-1000 ease-out"
                         style={{ width: `${progress?.percentage || 0}%` }}
                       />
                     </div>
@@ -247,7 +247,7 @@ return (
             </>
           )}
         </main>
-      </div}
+      </div>
     </div>
   );
 }
@@ -255,11 +255,11 @@ return (
 /* Reusable Sidebar Component */
 function SidebarItem({ to = "#", icon, text, active = false, isOpen = true, locked = false, requiredPlan = "Premium" }) {
   const label = locked ? `${text} · ${requiredPlan}` : text;
-  const content = <><span className=\"text-lg\">{locked ? \"🔒\" : icon}</span>{isOpen && <span className=\"truncate\">{label}</span>}</>;
+  const content = <><span className="text-lg">{locked ? "🔒" : icon}</span>{isOpen && <span className="truncate">{label}</span>}</>;
   if (locked) {
-    return <button type=\"button\" onClick={() => window.location.href = \"/pricing\"} title={!isOpen ? label : `Requires ${requiredPlan}`} className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-medium text-slate-400 transition-all hover:bg-slate-50 hover:text-slate-600 ${!isOpen ? \"justify-center\" : \"\"}`}>{content}</button>;
+    return <button type="button" onClick={() => window.location.href = "/pricing"} title={!isOpen ? label : `Requires ${requiredPlan}`} className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-medium text-slate-400 transition-all hover:bg-slate-50 hover:text-slate-600 ${!isOpen ? "justify-center" : ""}`}>{content}</button>;
   }
-  return <Link to={to} title={!isOpen ? text : undefined} className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-200 ${active ? \"bg-slate-600 text-white shadow-lg shadow-slate-200\" : \"text-slate-500 hover:bg-slate-50 hover:text-slate-900\"} ${!isOpen ? \"justify-center\" : \"\"}`}>{content}</Link>;
+  return <Link to={to} title={!isOpen ? text : undefined} className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-200 ${active ? "bg-slate-600 text-white shadow-lg shadow-slate-200" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"} ${!isOpen ? "justify-center" : ""}`}>{content}</Link>;
 }
 
 /* Dashboard Card Component */
@@ -267,7 +267,33 @@ function DashboardCard({ icon, title, text, button, onClick, locked = false }) {
   return (
     <div className={`group rounded-3xl border ${locked ? 'border-slate-100 bg-slate-50/50' : 'border-slate-100 bg-white'} p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-slate-100 relative overflow-hidden ${locked ? 'opacity-80' : ''}`}>
       {locked && (
-        <div className=\"absolute top-4 right-4 text-slate-300 group-hover:text-slate-300 transition-colors\" title=\"Premium Feature\">\n          🔒\n        </div>\n      )}
-      <div className={`flex h-12 w-12 items-center justify-center rounded-2xl text-xl transition-colors duration-300 ${locked ? 'bg-slate-200' : 'bg-slate-50 text-slate-600 group-hover:bg-slate-600 group-hover:text-white'}`}>\n        {icon}\n      </div>\n      <h3 className=\"mt-6 text-lg font-bold text-slate-800\">{title}</h3>\n      <p className=\"mt-2 text-sm leading-relaxed text-slate-500\">{text}</p>\n      \n      {locked ? (\n        <button\n          onClick={() => window.location.href = \"/pricing\"}\n          className=\"mt-6 text-sm font-bold text-slate-600 hover:text-slate-700 transition-all flex items-center gap-1\"\n        >\n          Unlock Premium <span className=\"text-lg\">→</span>\n        </button>\n      ) : (\n        <button\n          onClick={onClick}\n          className=\"mt-6 text-sm font-bold text-slate-800 hover:text-slate-600 transition-all flex items-center gap-1\"\n        >\n          {button} <span className=\"text-lg group-hover:translate-x-1 transition-transform\">→</span>\n        </button>\n      )}\n    </div>\n  );\n}
+        <div className="absolute top-4 right-4 text-slate-300 group-hover:text-slate-300 transition-colors" title="Premium Feature">
+          🔒
+        </div>
+      )}
+      <div className={`flex h-12 w-12 items-center justify-center rounded-2xl text-xl transition-colors duration-300 ${locked ? 'bg-slate-200' : 'bg-slate-50 text-slate-600 group-hover:bg-slate-600 group-hover:text-white'}`}>
+        {icon}
+      </div>
+      <h3 className="mt-6 text-lg font-bold text-slate-800">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-slate-500">{text}</p>
+      
+      {locked ? (
+        <button
+          onClick={() => window.location.href = "/pricing"}
+          className="mt-6 text-sm font-bold text-slate-600 hover:text-slate-700 transition-all flex items-center gap-1"
+        >
+          Unlock Premium <span className="text-lg">→</span>
+        </button>
+      ) : (
+        <button
+          onClick={onClick}
+          className="mt-6 text-sm font-bold text-slate-800 hover:text-slate-600 transition-all flex items-center gap-1"
+        >
+          {button} <span className="text-lg group-hover:translate-x-1 transition-transform">→</span>
+        </button>
+      )}
+    </div>
+  );
+}
 
 export default StudentDashboard;
