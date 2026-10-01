@@ -47,12 +47,12 @@ const app = express();
 connectDB().then(() => seedWordList()).catch((error) => console.error("Word library sync failed:", error.message));
 
 // Middleware
+const allowedOrigins = process.env.ALLOWED_ORIGINS 
+  ? process.env.ALLOWED_ORIGINS.split(',') 
+  : ["http://localhost:5173", "http://localhost:5174"];
+
 const corsOptions = {
-  origin: [
-    "https://speakly-eosin.vercel.app",
-    "http://localhost:5173",
-    "http://localhost:5174"
-  ],
+  origin: allowedOrigins,
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
