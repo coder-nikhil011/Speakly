@@ -129,7 +129,7 @@ function TeacherDashboard() {
                   <div className="rounded-[2rem] border border-slate-100 bg-white p-8 lg:col-span-2 shadow-sm">
                     <div className="flex items-center justify-between mb-8">
                       <div>
-                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Student Progress</p>
+                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Teacher Progress</p>
                     <h2 className="mt-2 text-2xl font-bold text-slate-800">Your students</h2>
                       </div>
                       <button

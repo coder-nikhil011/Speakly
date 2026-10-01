@@ -101,7 +101,7 @@ function UserNavbar() {
                 </div>
                 <div className="py-2">
                   <Link 
-                    to={user?.role === 'teacher' ? "/teacher-profile" : "/student-profile"} 
+                    to={user?.role === 'teacher' ? "/teacher/profile" : "/student/student-profile"}
                     className="flex items-center px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 rounded-xl transition-colors font-medium"
                   >
                     Profile

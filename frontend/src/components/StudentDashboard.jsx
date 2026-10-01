@@ -72,16 +72,16 @@ return (
         >
           <div className="space-y-1.5">
             <SidebarItem to="/student" active icon="⌂" text="Home" isOpen={isSidebarOpen} />
-            <SidebarItem to="/learn" icon="📖" text="Learn" isOpen={isSidebarOpen} />
-            {hasPlan("Premium") ? <SidebarItem to="/my-teachers" icon="👨‍🏫" text="My Teachers" isOpen={isSidebarOpen} /> : <SidebarItem to="/pricing" icon="🔒" text="My Teachers · Premium" isOpen={isSidebarOpen} />}
+            <SidebarItem to="/student/learn" icon="📖" text="Learn" isOpen={isSidebarOpen} />
+            {hasPlan("Premium") ? <SidebarItem to="/student/my-teachers" icon="👨‍🏫" text="My Teachers" isOpen={isSidebarOpen} /> : <SidebarItem to="/pricing" icon="🔒" text="My Teachers · Premium" isOpen={isSidebarOpen} />}
             <SidebarItem to="/student/teacher-lessons" icon="📚" text="Teacher's Lessons" isOpen={isSidebarOpen} locked={!hasPlan("Premium")} requiredPlan="Premium" />
             <SidebarItem to="/social/community" icon="👥" text="Community" isOpen={isSidebarOpen} />
-            <SidebarItem to="/revision-session" icon="↻" text="Revision" isOpen={isSidebarOpen} />
+            <SidebarItem to="/student/revision-session" icon="↻" text="Revision" isOpen={isSidebarOpen} />
             
-            <SidebarItem to="/speaking-practice" icon="🎙" text="Speaking Practice" isOpen={isSidebarOpen} />
-            <SidebarItem to="/challenges" icon="⚡" text="Challenges" isOpen={isSidebarOpen} />
-            <SidebarItem to="/contest" icon="🏆" text="Contest" isOpen={isSidebarOpen} locked={!hasPlan("Premium")} requiredPlan="Premium" />
-            <SidebarItem to="/progress" icon="📊" text="Progress" isOpen={isSidebarOpen} />
+            <SidebarItem to="/student/speaking-practice" icon="🎙" text="Speaking Practice" isOpen={isSidebarOpen} />
+            <SidebarItem to="/student/challenges" icon="⚡" text="Challenges" isOpen={isSidebarOpen} />
+            <SidebarItem to="/student/contest" icon="🏆" text="Contest" isOpen={isSidebarOpen} locked={!hasPlan("Premium")} requiredPlan="Premium" />
+            <SidebarItem to="/student/progress" icon="📊" text="Progress" isOpen={isSidebarOpen} />
           </div>
 
           <div className="absolute bottom-8 left-0 w-full px-6">
@@ -137,7 +137,7 @@ return (
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-50 text-3xl">
                     🌟
                   </div>
-                  <div>
+                  <div >
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Current Level</p>
                     <h3 className="text-2xl font-bold text-slate-800">Level {progress?.currentLevel || 1}</h3>
                     <p className="text-sm text-slate-500">Keep learning to reach Level { (progress?.currentLevel || 1) + 1 }</p>
@@ -165,7 +165,7 @@ return (
               <section className="mb-16">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-2xl font-bold text-slate-800">Your Learning Path</h2>
-                  <Link to="/progress" className="text-sm font-semibold text-slate-600 hover:text-slate-700 transition">
+                  <Link to="/student/progress" className="text-sm font-semibold text-slate-600 hover:text-slate-700 transition">
                     View Full Stats →
                   </Link>
                 </div>
@@ -191,7 +191,7 @@ return (
                     title="Smart Revision"
                     text="Review words you've learned before."
                     button="Revise now"
-                    onClick={() => navigate("/smart-revision")}
+                    onClick={() => navigate("/student/smart-revision")}
                     locked={false}
                   />
                   <DashboardCard
@@ -199,7 +199,7 @@ return (
                     title="Speaking Practice"
                     text="Real conversations with AI."
                     button="Start speaking"
-                    onClick={() => navigate("/speaking-practice")}
+                    onClick={() => navigate("/student/speaking-practice")}
                     locked={false}
                   />
                   <DashboardCard
@@ -207,7 +207,7 @@ return (
                     title="Daily Challenge"
                     text="Test yourself with a quick challenge."
                     button="Take challenge"
-                    onClick={() => navigate("/challenges")}
+                    onClick={() => navigate("/student/challenges")}
                     locked={false}
                   />
                   <DashboardCard
@@ -215,7 +215,7 @@ return (
                     title="Contest"
                     text="Join a LeetCode-style language contest built for your level."
                     button="View contest"
-                    onClick={() => navigate("/contest")}
+                    onClick={() => navigate("/student/contest")}
                     locked={!hasPlan("Premium")}
                   />
                 </div>
@@ -225,19 +225,19 @@ return (
               <section className="rounded-[2rem] border border-slate-100 bg-white p-8 sm:p-12 shadow-sm relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full -mr-16 -mt-16 opacity-50"></div>
                 <div className="relative z-10 flex flex-col justify-between gap-8 sm:flex-row sm:items-center">
-                  <div>
+                  <div >
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Growth Tracker</p>
-                    <h2 className="text-3xl font-bold text-slate-800">You're making steady progress</h2>
-                    <p className="mt-2 text-slate-500">Keep going! Every word brings you closer to mastery.</p>
+                    <h2 className=\"text-3xl font-bold text-slate-800\">You're making steady progress</h2>
+                    <p className=\"mt-2 text-slate-500\">Keep going! Every word brings you closer to mastery.</p>
                   </div>
-                  <div className="w-full sm:w-72">
-                    <div className="mb-4 flex justify-between items-end">
-                      <span className="text-sm font-bold text-slate-600">Overall Mastery</span>
-                      <span className="text-3xl font-black text-slate-600">{progress?.percentage || 0}%</span>
+                  <div className=\"w-full sm:w-72\">
+                    <div className=\"mb-4 flex justify-between items-end\">
+                      <span className=\"text-sm font-bold text-slate-600\">Overall Mastery</span>
+                      <span className=\"text-3xl font-black text-slate-600\">{progress?.percentage || 0}%</span>
                     </div>
-                    <div className="h-4 overflow-hidden rounded-full bg-slate-100 p-1">
+                    <div className=\"h-4 overflow-hidden rounded-full bg-slate-100 p-1\">
                       <div
-                        className="h-full rounded-full bg-slate-600 transition-all duration-1000 ease-out"
+                        className=\"h-full rounded-full bg-slate-600 transition-all duration-1000 ease-out\"
                         style={{ width: `${progress?.percentage || 0}%` }}
                       />
                     </div>
@@ -247,7 +247,7 @@ return (
             </>
           )}
         </main>
-      </div>
+      </div}
     </div>
   );
 }
@@ -255,11 +255,11 @@ return (
 /* Reusable Sidebar Component */
 function SidebarItem({ to = "#", icon, text, active = false, isOpen = true, locked = false, requiredPlan = "Premium" }) {
   const label = locked ? `${text} · ${requiredPlan}` : text;
-  const content = <><span className="text-lg">{locked ? "🔒" : icon}</span>{isOpen && <span className="truncate">{label}</span>}</>;
+  const content = <><span className=\"text-lg\">{locked ? \"🔒\" : icon}</span>{isOpen && <span className=\"truncate\">{label}</span>}</>;
   if (locked) {
-    return <button type="button" onClick={() => window.location.href = "/pricing"} title={!isOpen ? label : `Requires ${requiredPlan}`} className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-medium text-slate-400 transition-all hover:bg-slate-50 hover:text-slate-600 ${!isOpen ? "justify-center" : ""}`}>{content}</button>;
+    return <button type=\"button\" onClick={() => window.location.href = \"/pricing\"} title={!isOpen ? label : `Requires ${requiredPlan}`} className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-medium text-slate-400 transition-all hover:bg-slate-50 hover:text-slate-600 ${!isOpen ? \"justify-center\" : \"\"}`}>{content}</button>;
   }
-  return <Link to={to} title={!isOpen ? text : undefined} className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-200 ${active ? "bg-slate-600 text-white shadow-lg shadow-slate-200" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"} ${!isOpen ? "justify-center" : ""}`}>{content}</Link>;
+  return <Link to={to} title={!isOpen ? text : undefined} className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-200 ${active ? \"bg-slate-600 text-white shadow-lg shadow-slate-200\" : \"text-slate-500 hover:bg-slate-50 hover:text-slate-900\"} ${!isOpen ? \"justify-center\" : \"\"}`}>{content}</Link>;
 }
 
 /* Dashboard Card Component */
@@ -267,33 +267,7 @@ function DashboardCard({ icon, title, text, button, onClick, locked = false }) {
   return (
     <div className={`group rounded-3xl border ${locked ? 'border-slate-100 bg-slate-50/50' : 'border-slate-100 bg-white'} p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-slate-100 relative overflow-hidden ${locked ? 'opacity-80' : ''}`}>
       {locked && (
-        <div className="absolute top-4 right-4 text-slate-300 group-hover:text-slate-300 transition-colors" title="Premium Feature">
-          🔒
-        </div>
-      )}
-      <div className={`flex h-12 w-12 items-center justify-center rounded-2xl text-xl transition-colors duration-300 ${locked ? 'bg-slate-200' : 'bg-slate-50 text-slate-600 group-hover:bg-slate-600 group-hover:text-white'}`}>
-        {icon}
-      </div>
-      <h3 className="mt-6 text-lg font-bold text-slate-800">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-slate-500">{text}</p>
-      
-      {locked ? (
-        <button
-          onClick={() => window.location.href = "/pricing"}
-          className="mt-6 text-sm font-bold text-slate-600 hover:text-slate-700 transition-all flex items-center gap-1"
-        >
-          Unlock Premium <span className="text-lg">→</span>
-        </button>
-      ) : (
-        <button
-          onClick={onClick}
-          className="mt-6 text-sm font-bold text-slate-800 hover:text-slate-600 transition-all flex items-center gap-1"
-        >
-          {button} <span className="text-lg group-hover:translate-x-1 transition-transform">→</span>
-        </button>
-      )}
-    </div>
-  );
-}
+        <div className=\"absolute top-4 right-4 text-slate-300 group-hover:text-slate-300 transition-colors\" title=\"Premium Feature\">\n          🔒\n        </div>\n      )}
+      <div className={`flex h-12 w-12 items-center justify-center rounded-2xl text-xl transition-colors duration-300 ${locked ? 'bg-slate-200' : 'bg-slate-50 text-slate-600 group-hover:bg-slate-600 group-hover:text-white'}`}>\n        {icon}\n      </div>\n      <h3 className=\"mt-6 text-lg font-bold text-slate-800\">{title}</h3>\n      <p className=\"mt-2 text-sm leading-relaxed text-slate-500\">{text}</p>\n      \n      {locked ? (\n        <button\n          onClick={() => window.location.href = \"/pricing\"}\n          className=\"mt-6 text-sm font-bold text-slate-600 hover:text-slate-700 transition-all flex items-center gap-1\"\n        >\n          Unlock Premium <span className=\"text-lg\">→</span>\n        </button>\n      ) : (\n        <button\n          onClick={onClick}\n          className=\"mt-6 text-sm font-bold text-slate-800 hover:text-slate-600 transition-all flex items-center gap-1\"\n        >\n          {button} <span className=\"text-lg group-hover:translate-x-1 transition-transform\">→</span>\n        </button>\n      )}\n    </div>\n  );\n}
 
 export default StudentDashboard;

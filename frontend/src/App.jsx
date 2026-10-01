@@ -170,6 +170,7 @@ function AppContent() {
         <Route path="/student/teacher-lessons" element={<ProtectedRoute role="student"><StudentTeacherLessons /></ProtectedRoute>} />
         <Route path="/social/community" element={<ProtectedRoute role="student"><Community /></ProtectedRoute>} />
         <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
+        <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="*" element={<NotFound />} />
