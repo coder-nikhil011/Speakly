@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { notificationService } from '../services/notificationService';
+import * as notificationService from '../services/notificationService';
 import logo from "../assets/navbar_logo.png";
 import { Link } from "react-router-dom";
 import React from "react";
@@ -22,7 +22,7 @@ function NotificationBell() {
       try {
         const data = await notificationService.getNotifications();
         setNotifications(data);
-        await notificationService.markAllAsRead();
+        await notificationService.markAllNotificationsRead();
         setUnreadCount(0);
       } catch (e) { console.error(e); }
     }
