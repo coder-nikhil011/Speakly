@@ -62,7 +62,7 @@ function Community() {
       await api.post("/social/handle-request", { requestId, status });
       alert(`Request ${status}!`);
       fetchPendingRequests();
-    fetchFriends();
+      fetchFriends();
     } catch (error) {
       alert("Error handling request");
     }
@@ -116,7 +116,7 @@ function Community() {
                     </button>
                   </div>
                 </div>
-              ))}
+              )) }
             </div>
           </div>
         )}
@@ -130,9 +130,9 @@ function Community() {
             {friends.length === 0 ? <p className="text-sm text-slate-400">Accept or add a friend to start a private video call.</p> : friends.map((friend) => (
               <div key={friend._id} className="flex items-center justify-between rounded-2xl border border-slate-100 bg-slate-50 p-4">
                 <div className="flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-white font-bold text-slate-600">{friend.name?.charAt(0)}</div><div><p className="font-bold text-slate-800">{friend.name}</p><p className="text-xs text-slate-400">{friend.email}</p></div></div>
-                <button onClick={() => navigate(`/speaking-room?friendId=${encodeURIComponent(friend._id)}`)} className="rounded-xl bg-black px-4 py-2 text-xs font-bold text-white">📹 Call</button>
+                <button onClick={() => navigate(`/student/speaking-room?friendId=${encodeURIComponent(friend._id)}`)} className="rounded-xl bg-black px-4 py-2 text-xs font-bold text-white">📹 Call</button>
               </div>
-            ))}
+            )) }
           </div>
         </div>
 
@@ -184,7 +184,7 @@ function Community() {
                 Add Friend
               </button>
             </div>
-          ))}
+          )) }
           {users.length === 0 && !loading && (
             <div className="col-span-full text-center py-20 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
               <div className="text-4xl mb-4">🔎</div>
