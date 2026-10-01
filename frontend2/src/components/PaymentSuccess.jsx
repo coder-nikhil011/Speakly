@@ -1,0 +1,3 @@
+import React from "react";
+import { Link } from "react-router-dom";
+export default function PaymentSuccess(){return <div className="min-h-screen bg-[#F8FAF9] flex items-center justify-center p-6"><div className="max-w-lg rounded-[2rem] bg-white border border-slate-200 p-10 text-center"><div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#E7F5EF] text-2xl">✓</div><h1 className="mt-6 text-3xl font-extrabold">Payment received</h1><p className="mt-3 text-slate-500">Your plan will update after Stripe confirms the subscription. You can return to your dashboard now.</p><Link to="/student" className="mt-7 inline-block rounded-xl bg-black px-6 py-3 font-bold text-white">Go to dashboard</Link></div></div>}
