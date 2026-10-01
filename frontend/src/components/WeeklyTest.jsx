@@ -11,12 +11,14 @@ function WeeklyTest() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [expiryDate, setExpiryDate] = useState(null);
 
   useEffect(() => {
     const fetchTest = async () => {
       try {
         const response = await api.get("/weekly-test/generate");
         setTestData(response.data.data);
+        setExpiryDate(response.data.expiryDate);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to load weekly test.");
       } finally {
@@ -52,9 +54,13 @@ function WeeklyTest() {
 
   if (error) return (
     <div className="flex h-screen flex-col items-center justify-center bg-[#F8FAF9] px-6 text-center">
-      <h2 className="text-2xl font-bold text-slate-900">No Test Available</h2>
+      <div className="text-5xl mb-6">⏳</div>
+      <h2 className="text-2xl font-bold text-slate-900">Test Not Ready Yet</h2>
       <p className="mt-2 text-slate-500">{error}</p>
-      <Link to="/student" className="mt-6 font-bold underline">Back to Dashboard</Link>
+      <div className="mt-6 p-4 rounded-2xl bg-slate-100 text-sm font-bold text-slate-600">
+        Next test available on: {expiryDate || "TBD"}
+      </div>
+      <Link to="/student" className="mt-8 font-bold underline text-slate-900">Back to Dashboard</Link>
     </div>
   );
 
@@ -66,24 +72,30 @@ function WeeklyTest() {
             <span className="text-2xl cursor-pointer">←</span>
             <img src={logo} alt="Speakly" className="h-10 w-auto object-contain" />
           </Link>
-          <span className="rounded-full bg-slate-100 px-4 py-1 text-xs font-bold text-slate-600">
-            WEEKLY VOCAB TEST
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="rounded-full bg-amber-50 px-4 py-1 text-xs font-bold text-amber-600">
+              Expires: {expiryDate || "Soon"}
+            </span>
+            <span className="rounded-full bg-slate-100 px-4 py-1 text-xs font-bold text-slate-600">
+              WEEKLY VOCAB TEST
+            </span>
+          </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-3xl px-6 py-10">
         {!submitted ? (
           <form onSubmit={handleSubmit} className="space-y-10">
-            {/* Story Section */}
             <div className="rounded-3xl bg-white p-8 shadow-sm border border-slate-200">
-              <h2 className="text-xl font-bold mb-4 text-slate-900">The Story</h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold text-slate-900">The AI Story</h2>
+                <span className="text-xs font-bold text-slate-400 uppercase">Based on your history</span>
+              </div>
               <p className="text-lg leading-relaxed text-slate-700 italic">
                 "{testData?.story}"
               </p>
             </div>
 
-            {/* Questions Section */}
             <div className="space-y-6">
               <h2 className="text-xl font-bold text-slate-900">Fill in the Blanks</h2>
               {testData?.questions.map((q, idx) => (
@@ -99,22 +111,22 @@ function WeeklyTest() {
                         onClick={() => handleOptionChange(q.id, option)}
                         className={`text-left px-4 py-3 rounded-xl border transition text-sm font-medium ${
                           answers[q.id] === option 
-                          ? "border-black bg-black text-white" 
+                          ? "border-black bg-black text-white shadow-md"
                           : "border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300"
                         }`}
                       >
                         {option}
                       </button>
-                    ))}
+                    )) }
                   </div>
                 </div>
-              ))}
+              )) }
             </div>
 
             <button 
               type="submit"
               disabled={Object.keys(answers).length < testData?.questions.length}
-              className="w-full rounded-2xl bg-black py-4 font-bold text-white transition hover:bg-neutral-800 disabled:opacity-50"
+              className="w-full rounded-2xl bg-black py-4 font-bold text-white transition hover:bg-neutral-800 disabled:opacity-50 shadow-xl shadow-slate-200"
             >
               Submit Test
             </button>
@@ -134,7 +146,7 @@ function WeeklyTest() {
             <div className="mt-10 flex justify-center gap-4">
               <button 
                 onClick={() => navigate("/student")}
-                className="rounded-xl bg-black px-8 py-3 font-bold text-white transition hover:bg-neutral-800"
+                className="rounded-xl bg-black px-8 py-3 font-bold text-white transition hover:bg-neutral-800 shadow-lg shadow-slate-200"
               >
                 Back to Dashboard
               </button>

@@ -76,7 +76,10 @@ function TeacherStudentOverview() {
       // Calling the API to add student by email
       const response = await api.post("/teacher-content/add-student", { email: searchEmail });
       if (response.data.success) {
-        alert("Student added successfully!");
+        if (response.data.student) {
+          setSelectedStudent(response.data.student);
+          fetchStudentDetails(response.data.student._id);
+        }
         setIsModalOpen(false);
         setSearchEmail("");
         fetchStudents(); // Refresh list

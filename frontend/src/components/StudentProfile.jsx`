@@ -1,0 +1,290 @@
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getMyProfile, updateMyProfile } from "../services/profileService";
+import { getLearningProgress } from "../services/learningService";
+import { logoutUser } from "../services/authService";
+
+function StudentProfile() {
+  const navigate = useNavigate();
+
+  const [editing, setEditing] = useState(false);
+  const [student, setStudent] = useState(null);
+  const [progress, setProgress] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+
+  const [formData, setFormData] = useState({});
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const [profile, prog] = await Promise.all([
+          getMyProfile(),
+          getLearningProgress(),
+        ]);
+        setStudent(profile);
+        setFormData(profile);
+        setProgress(prog);
+      } catch (err) {
+        console.error("Error fetching profile:", err);
+        setError("Failed to load profile.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfileData();
+  }, []);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleEdit = () => {
+    setFormData(student);
+    setEditing(true);
+  };
+
+  const handleCancel = () => {
+    setFormData(student);
+    setEditing(false);
+  };
+
+  const handleSave = async () => {
+    setSaving(true);
+    setError("");
+    try {
+      const response = await updateMyProfile(formData);
+      const updatedProfile = response.data || formData;
+      setStudent(updatedProfile);
+      setEditing(false);
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to save changes.");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleLogout = () => {
+    logoutUser();
+  };
+
+  if (loading) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-[#F8FAF9]">
+        <p className="text-lg font-semibold text-slate-400">Loading profile...</p>
+      </div>
+    );
+  }
+
+  if (!student) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-[#F8FAF9]">
+        <p className="text-lg font-semibold text-slate-400">Profile not found.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#FDFDFD] text-slate-900 font-sans selection:bg-slate-100">
+      <main className="mx-auto max-w-6xl px-6 py-10 sm:py-14">
+        {/* Header Section */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+          <div>
+            <p className="text-xs font-bold tracking-[0.2em] text-[#65B891] uppercase">
+              Student Account
+            </p>
+            <h1 className="mt-3 text-4xl font-extrabold sm:text-6xl tracking-tight">
+              Your Profile
+            </h1>
+            <p className="mt-4 text-lg text-slate-500 max-w-2xl">
+              Manage your personal identity, learning goals, and track your mastery journey.
+            </p>
+          </div>
+          {!editing && (
+            <button
+              onClick={handleEdit}
+              className="rounded-2xl bg-black px-6 py-3 text-sm font-bold text-white transition hover:bg-neutral-800 shadow-lg shadow-slate-200 active:scale-95"
+            >
+              Edit Profile
+            </button>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          {/* Left Column: Identity Card */}
+          <div className="lg:col-span-1 space-y-6">
+            <section className="rounded-[2.5rem] bg-white border border-slate-100 p-8 shadow-sm text-center">
+              <div className="mx-auto mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-slate-900 text-5xl font-extrabold text-white shadow-2xl shadow-slate-200 ring-8 ring-slate-50">
+                {student.name?.charAt(0).toUpperCase() || "S"}
+              </div>
+              <h2 className="text-2xl font-extrabold tracking-tight">{student.name}</h2>
+              <p className="mt-2 text-slate-500 font-medium">{student.email}</p>
+              
+              <div className="mt-6 flex flex-wrap justify-center gap-2">
+                <span className="rounded-full bg-[#E7F5EF] px-4 py-1.5 text-xs font-bold text-[#477D65]">
+                  Student
+                </span>
+                <span className="rounded-full bg-amber-50 px-4 py-1.5 text-xs font-bold text-amber-600">
+                  {student.level || "Beginner"}
+                </span>
+              </div>
+
+              <div className="mt-8 pt-8 border-t border-slate-100 grid grid-cols-2 gap-4">
+                <div className="p-4 rounded-2xl bg-slate-50">
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Streak</p>
+                  <p className="text-xl font-black text-slate-800">{progress?.streak || 0} Days</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-slate-50">
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Level</p>
+                  <p className="text-xl font-black text-slate-800">{student.level || 1}</p>
+                </div>
+              </div>
+            </section>
+
+            <section className="rounded-[2.5rem] border border-red-100 bg-white p-8 shadow-sm">
+              <h3 className="font-extrabold text-red-600 mb-2">Account Security</h3>
+              <p className="text-sm text-slate-500 mb-6">Securely sign out of your Speakly account.</p>
+              <button
+                onClick={handleLogout}
+                className="w-full rounded-2xl border border-red-200 py-3 text-sm font-bold text-red-600 transition hover:bg-red-50 active:scale-95"
+              >
+                Log out
+              </button>
+            </section>
+          </div>
+
+          {/* Right Column: Details & Stats */}
+          <div className="lg:col-span-2 space-y-10">
+            {/* Editable Fields */}
+            <section className="rounded-[2.5rem] bg-white border border-slate-100 p-8 shadow-sm">
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <span>Personal Information</span>
+                {editing && <span className="text-xs font-medium text-slate-400">Editing Mode</span>}
+              </h3>
+
+              {error && (
+                <div className="mb-6 p-4 text-sm text-white bg-red-500 rounded-2xl animate-in fade-in slide-in-from-top-2">
+                  {error}
+                </div>
+              )}
+
+              <div className="grid gap-6 sm:grid-cols-2">
+                <ProfileField
+                  label="Full Name"
+                  name="name"
+                  value={formData.name}
+                  editing={editing}
+                  onChange={handleChange}
+                />
+                <ProfileField
+                  label="Email Address"
+                  name="email"
+                  value={formData.email}
+                  editing={editing}
+                  onChange={handleChange}
+                  type="email"
+                />
+                <ProfileField
+                  label="English Level"
+                  name="level"
+                  value={formData.level}
+                  editing={editing}
+                  onChange={handleChange}
+                />
+                <ProfileField
+                  label="Learning Goal"
+                  name="learningGoal"
+                  value={formData.learningGoal}
+                  editing={editing}
+                  onChange={handleChange}
+                />
+              </div>
+
+              {editing && (
+                <div className="mt-8 flex flex-col sm:flex-row justify-end gap-3 pt-6 border-t border-slate-100">
+                  <button
+                    onClick={handleCancel}
+                    className="rounded-2xl border border-slate-200 px-6 py-3 text-sm font-bold transition hover:bg-slate-50 active:scale-95"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleSave}
+                    disabled={saving}
+                    className="rounded-2xl bg-black px-6 py-3 text-sm font-bold text-white transition hover:bg-neutral-800 disabled:opacity-50 active:scale-95 shadow-lg shadow-slate-200"
+                  >
+                    {saving ? "Saving..." : "Save Changes"}
+                  </button>
+                </div>
+              )}
+            </section>
+
+            {/* Progress Visualization */}
+            <section className="rounded-[2.5rem] bg-white border border-slate-100 p-8 shadow-sm">
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h3 className="text-xl font-bold">Learning Mastery</h3>
+                  <p className="text-sm text-slate-500">Your overall progress across all modules.</p>
+                </div>
+                <span className="text-3xl font-black text-slate-900">{progress?.percentage || 0}%</span>
+              </div>
+
+              <div className="h-4 w-full overflow-hidden rounded-full bg-slate-100 mb-8">
+                <div
+                  className="h-full rounded-full bg-[#9DD8BD] transition-all duration-1000 ease-out"
+                  style={{ width: `${progress?.percentage || 0}%` }}
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <StatCard value={progress?.wordsLearned || 0} label="Words Mastered" icon="📚" />
+                <StatCard value={progress?.sessions || 0} label="Speaking Hours" icon="🎙" />
+                <StatCard value={progress?.streak || 0} label="Daily Streak" icon="🔥" />
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+function ProfileField({ label, name, value, editing, onChange, type = "text" }) {
+  return (
+    <div className="space-y-2">
+      <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+        {label}
+      </label>
+      {editing ? (
+        <input
+          type={type}
+          name={name}
+          value={value || ""}
+          onChange={onChange}
+          className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-black focus:ring-4 focus:ring-slate-50"
+        />
+      ) : (
+        <div className="rounded-2xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 border border-slate-100">
+          {value || "Not specified"}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function StatCard({ value, label, icon }) {
+  return (
+    <div className="rounded-3xl bg-[#FDFDFD] border border-slate-100 p-6 transition hover:shadow-sm group">
+      <div className="text-2xl mb-3 group-hover:scale-110 transition-transform">{icon}</div>
+      <p className="text-2xl font-black text-slate-800">{value}</p>
+      <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">{label}</p>
+    </div>
+  );
+}
+
+export default StudentProfile;
